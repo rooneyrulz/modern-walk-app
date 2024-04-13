@@ -1,3 +1,77 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Resets */
+
+.rt-Box {
+    display: flex !important;
+}
+
+.rt-Card {
+    --card-border-width: none !important;
+}
+
+/* Globals and Utilties */
+section {
+    padding-block: 2rem;
+}
+
+.container {
+    width: 80%;
+    margin: auto;
+}
+
+.bg-women {
+    background-color: #FF5E84;
+}
+
+.bg-men {
+    background-color: #2BD9AF;
+}
+
+.bg-jewelery {
+    background-color: darkgoldenrod;
+}
+
+.bg-electronics {
+    background-color: coral;
+}
+
+/* Custom */
+.navbar {
+    padding: 2rem 0;
+    text-align: center;
+    border-bottom: 2px solid #cccccc;
+}
+
+.card-wrapper {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    border-radius: 1.25rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+}
+
+.card-description {
+    padding: 1rem 2rem;
+    text-align: center;
+    max-height: 150px;
+    overflow: hidden;
+    border-radius: 1.25rem;
+}
+
+.card-text {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: block;
+}
+
+.category-box {
+    padding: 100px 250px;
+    color: #ffffff;
+    border-radius: 1.25rem;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
