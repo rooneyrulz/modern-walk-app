@@ -11,8 +11,9 @@ async function getProductsByCategory(categoryName: string | undefined) {
 }
 
 export default async function Category({ params }: { params: { id: string } }) {
-  const category = categories.find(
-    (c: CategoryType) => c.id === params.id.toString()
+  const categoryList = await categories;
+  const category = categoryList.find(
+    (c: CategoryType) => c.id.toString() === params.id.toString()
   );
 
   const res = await getProductsByCategory(category?.name);
@@ -20,6 +21,10 @@ export default async function Category({ params }: { params: { id: string } }) {
     ...product,
     categories: category,
   }));
+
+  if (!products.length) {
+    return <p>No Products available!</p>
+  }
 
   return (
     <>

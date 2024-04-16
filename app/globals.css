@@ -27,19 +27,20 @@ img {
     margin: auto;
 }
 
-.bg-women {
-    background-color: #FF5E84;
-}
 
-.bg-men {
+.bg-1 {
     background-color: #2BD9AF;
 }
 
-.bg-jewelery {
+.bg-2 {
+    background-color: #FF5E84;
+}
+
+.bg-3 {
     background-color: darkgoldenrod;
 }
 
-.bg-electronics {
+.bg-4 {
     background-color: coral;
 }
 

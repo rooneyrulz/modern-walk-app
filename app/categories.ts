@@ -1,34 +1,35 @@
-import { v4 } from "uuid";
 import { Category } from "./category.types";
 
-export const categories: Category[] = [
-    {
-        id: v4(),
-        name: "men's clothing", // name should match the exact category name from API
-        title: "Men's Clothing",
-        classNames: ["bg-men"]
-    },
-    {
-        id: v4(),
-        name: "women's clothing", // name should match the exact category name from API
-        title: "Women's Clothing",
-        classNames: ["bg-women"]
-    },
+// Define the category names you need here
+const DEFAULT_CATEGORIES = ["men's clothing", "women's clothing"];
 
-    // {
-    //     id: v4(),
-    //     name: "jewelery", // name should match the exact category name from API
-    //     title: "Jewelery",
-    //     classNames: ["bg-jewelery"]
-    // },
+async function fetchCategories() {
+  return await (
+    await fetch("https://fakestoreapi.com/products/categories")
+  ).json();
+}
 
-    
-    // {
-    //     id: v4(),
-    //     name: "electronics", // name should match the exact category name from API
-    //     title: "Electronics",
-    //     classNames: ["bg-electronics"]
-    // },
+mapCategories();
+export async function mapCategories() {
+  let categoryList = await fetchCategories();
+  categoryList = categoryList.filter((c: string) =>
+    DEFAULT_CATEGORIES.includes(c)
+  );
 
-    // Add more categories here if you want to
-];
+  const classes: any = {};
+
+  categoryList.forEach((category: string, index: string) => {
+    classes[category] = `bg-${index + 1}`;
+  });
+
+  const categories = categoryList?.map((category: string, index: string) => ({
+    id: index + 1,
+    name: category,
+    title: category,
+    classNames: [classes[category]],
+  }));
+
+  return categories;
+}
+
+export const categories: Promise<Category[]> = mapCategories();
